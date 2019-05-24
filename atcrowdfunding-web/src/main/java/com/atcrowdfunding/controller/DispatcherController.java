@@ -10,6 +10,10 @@ import com.atcrowdfunding.bean.Permission;
 import com.atcrowdfunding.bean.User;
 import com.atcrowdfunding.service.PermissionService;
 import com.atcrowdfunding.service.UserService;
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class DispatcherController {
+	private static final Logger logger = LoggerFactory.getLogger(DispatcherController.class);
+
 
 	@Autowired
 	private UserService userService;
@@ -33,6 +39,7 @@ public class DispatcherController {
 	
 	@RequestMapping("/error")
 	public String error() {
+		logger.error("错误信息打印....");
 		return "error";
 	}
 	
@@ -40,6 +47,7 @@ public class DispatcherController {
 	public String logout(HttpSession session) {
 		//session.removeAttribute("loginUser");
 		session.invalidate();
+		logger.info("退出信息........");
 		return "redirect:login";
 	}
 	@RequestMapping("/register")
@@ -49,6 +57,7 @@ public class DispatcherController {
 
 	@RequestMapping("/main")
 	public String main() {
+		logger.debug("登陆成功.......");
 		return "main";
 	}
 	

@@ -13,6 +13,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+
 <!--    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" >-->
 <!--        <property name="driverClass" value="${c3p0.driverClass}"/>-->
 <!--        <property name="jdbcUrl" value="${c3p0.jdbcUrl}"/>-->
@@ -21,6 +22,7 @@
 <!--    </bean>-->
     <!--配置加载文件  -->
     <context:property-placeholder location="classpath:*/jdbc.properties"/>
+    <context:property-placeholder location="classpath:log4j.properties"/>
     <!--配置数据库  -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
